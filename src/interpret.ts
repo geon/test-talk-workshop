@@ -56,16 +56,17 @@ export async function interpret(
 
 function buildJumpTable(code: string) {
 	const jumpTable: Record<number, number> = {};
-	let openIndex: number | undefined;
+	const openStack: number[] = [];
 
 	for (const [currentIndex, instruction] of code.split("").entries()) {
 		switch (instruction) {
 			case "[": {
-				openIndex = currentIndex;
+				openStack.push(currentIndex);
 				break;
 			}
 
 			case "]": {
+				const openIndex = openStack.pop();
 				if (openIndex === undefined) {
 					throw new Error(`Unmatched ] at index ${currentIndex}`);
 				}
