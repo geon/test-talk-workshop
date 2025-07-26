@@ -80,6 +80,12 @@ testCases([
 		input: "",
 		output: "",
 	},
+	{
+		name: "loop",
+		code: "++.[-.]",
+		input: "",
+		output: "\x02\x01\x00",
+	},
 ]);
 
 type TestCase = {
