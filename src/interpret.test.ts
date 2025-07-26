@@ -26,6 +26,12 @@ testCases([
 		input: "A",
 		output: "A",
 	},
+	{
+		name: "increment memory",
+		code: ",.+.+.",
+		input: "A",
+		output: "ABC",
+	},
 ]);
 
 type TestCase = {
