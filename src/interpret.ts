@@ -7,20 +7,27 @@ export async function interpret(
 ): Promise<void> {
 	const instructions = createInstructions(code);
 
-	switch (instructions.getNext()) {
-		case undefined: {
-			return;
-		}
+	while (true) {
+		switch (instructions.getNext()) {
+			case undefined: {
+				return;
+			}
 
-		case ".": {
-			io.put(0);
-			break;
+			case ".": {
+				io.put(0);
+				break;
+			}
 		}
 	}
 }
 
 function createInstructions(code: string) {
+	let currentInstructionPointer = -1;
+
 	return {
-		getNext: (): string | undefined => code[0],
+		getNext: (): string | undefined => {
+			++currentInstructionPointer;
+			return code[currentInstructionPointer];
+		},
 	};
 }
