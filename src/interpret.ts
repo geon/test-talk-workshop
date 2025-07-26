@@ -28,6 +28,11 @@ export async function interpret(
 				memory.set(memory.get() + 1);
 				break;
 			}
+
+			case "-": {
+				memory.set(memory.get() - 1);
+				break;
+			}
 		}
 	}
 }
