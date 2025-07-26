@@ -32,6 +32,12 @@ testCases([
 		input: "A",
 		output: "ABC",
 	},
+	{
+		name: "decrement memory",
+		code: ",.-.-.",
+		input: "C",
+		output: "CBA",
+	},
 ]);
 
 type TestCase = {
