@@ -68,6 +68,12 @@ testCases([
 		input: "",
 		output: "",
 	},
+	{
+		name: "no branch",
+		code: "+[.-]",
+		input: "",
+		output: "\x01",
+	},
 ]);
 
 type TestCase = {
