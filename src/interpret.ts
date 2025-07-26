@@ -38,6 +38,11 @@ export async function interpret(
 				memory.incrementPointer();
 				break;
 			}
+
+			case "<": {
+				memory.decrementPointer();
+				break;
+			}
 		}
 	}
 }
@@ -63,6 +68,9 @@ function createMemory() {
 		},
 		incrementPointer: (): void => {
 			++pointer;
+		},
+		decrementPointer: (): void => {
+			--pointer;
 		},
 	};
 }
