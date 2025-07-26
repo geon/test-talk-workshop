@@ -50,6 +50,12 @@ testCases([
 		input: "",
 		output: "\xff",
 	},
+	{
+		name: "increment pointer",
+		code: ",>.",
+		input: "A",
+		output: "\x00",
+	},
 ]);
 
 type TestCase = {
