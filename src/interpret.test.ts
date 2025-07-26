@@ -14,6 +14,12 @@ testCases([
 		input: "",
 		output: "\x00",
 	},
+	{
+		name: "output twice",
+		code: "..",
+		input: "",
+		output: "\x00\x00",
+	},
 ]);
 
 type TestCase = {
