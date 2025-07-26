@@ -53,7 +53,7 @@ function createMemory() {
 	return {
 		get: (): number => memory,
 		set: (value: number): void => {
-			memory = value;
+			memory = value & 0xff;
 		},
 	};
 }
