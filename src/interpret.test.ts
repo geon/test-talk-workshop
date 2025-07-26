@@ -74,6 +74,12 @@ testCases([
 		input: "",
 		output: "\x01",
 	},
+	{
+		name: "branch past nested",
+		code: "[[].]",
+		input: "",
+		output: "",
+	},
 ]);
 
 type TestCase = {
