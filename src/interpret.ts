@@ -33,6 +33,11 @@ export async function interpret(
 				memory.set(memory.get() - 1);
 				break;
 			}
+
+			case ">": {
+				memory.incrementPointer();
+				break;
+			}
 		}
 	}
 }
@@ -49,11 +54,15 @@ function createInstructions(code: string) {
 }
 
 function createMemory() {
-	let memory = 0;
+	const memory: Record<number, number> = {};
+	let pointer = 0;
 	return {
-		get: (): number => memory,
+		get: (): number => memory[pointer] ?? 0,
 		set: (value: number): void => {
-			memory = value & 0xff;
+			memory[pointer] = value & 0xff;
+		},
+		incrementPointer: (): void => {
+			++pointer;
 		},
 	};
 }
