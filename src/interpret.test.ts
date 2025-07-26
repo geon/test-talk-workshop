@@ -38,6 +38,18 @@ testCases([
 		input: "C",
 		output: "CBA",
 	},
+	{
+		name: "overflow memory",
+		code: ",+.",
+		input: "\xff",
+		output: "\x00",
+	},
+	{
+		name: "underflow memory",
+		code: "-.",
+		input: "",
+		output: "\xff",
+	},
 ]);
 
 type TestCase = {
