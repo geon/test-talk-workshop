@@ -43,17 +43,56 @@ export async function interpret(
 				memory.decrementPointer();
 				break;
 			}
+
+			case "[": {
+				instructions.branch();
+				break;
+			}
 		}
 	}
 }
 
+function buildJumpTable(code: string) {
+	const jumpTable: Record<number, number> = {};
+	let openIndex: number | undefined;
+
+	for (const [currentIndex, instruction] of code.split("").entries()) {
+		switch (instruction) {
+			case "[": {
+				openIndex = currentIndex;
+				break;
+			}
+
+			case "]": {
+				if (openIndex === undefined) {
+					throw new Error(`Unmatched ] at index ${currentIndex}`);
+				}
+				jumpTable[openIndex] = currentIndex;
+				break;
+			}
+		}
+	}
+
+	return jumpTable;
+}
+
 function createInstructions(code: string) {
+	const jumpTable = buildJumpTable(code);
 	let currentInstructionPointer = -1;
 
 	return {
 		getNext: (): string | undefined => {
 			++currentInstructionPointer;
 			return code[currentInstructionPointer];
+		},
+		branch: () => {
+			const jumpTarget = jumpTable[currentInstructionPointer];
+			if (jumpTarget === undefined) {
+				throw new Error(
+					`Missing jump target for branch at index ${currentInstructionPointer}`,
+				);
+			}
+			currentInstructionPointer = jumpTarget;
 		},
 	};
 }
