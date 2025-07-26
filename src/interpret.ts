@@ -5,5 +5,5 @@ export async function interpret(
 		put: (value: number) => void;
 	},
 ): Promise<void> {
-	return;
+	throw new Error("Not implemented.");
 }
