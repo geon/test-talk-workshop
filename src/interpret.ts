@@ -50,6 +50,13 @@ export async function interpret(
 				}
 				break;
 			}
+
+			case "]": {
+				if (memory.get()) {
+					instructions.branch();
+				}
+				break;
+			}
 		}
 	}
 }
@@ -71,6 +78,7 @@ function buildJumpTable(code: string) {
 					throw new Error(`Unmatched ] at index ${currentIndex}`);
 				}
 				jumpTable[openIndex] = currentIndex;
+				jumpTable[currentIndex] = openIndex;
 				break;
 			}
 		}
