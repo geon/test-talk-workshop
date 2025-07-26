@@ -92,6 +92,12 @@ testCases([
 		input: "",
 		output: "\x02\x01\x00",
 	},
+	{
+		name: "Demo: reverse string",
+		code: ">,[>,]<[.[-]<]",
+		input: "A man, a plan, a canal, Panama.",
+		output: ".amanaP ,lanac a ,nalp a ,nam A",
+	},
 ]);
 
 type TestCase = {
