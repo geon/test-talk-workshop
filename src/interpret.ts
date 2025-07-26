@@ -45,7 +45,9 @@ export async function interpret(
 			}
 
 			case "[": {
-				instructions.branch();
+				if (!memory.get()) {
+					instructions.branch();
+				}
 				break;
 			}
 		}
