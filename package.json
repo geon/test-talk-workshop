@@ -8,11 +8,14 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "prettier": "prettier --write \"src/**/*.ts\"",
+    "interactive": "npx tsx src/bin/interactive.ts",
     "": ""
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^3.2.4",
+    "@types/node": "^24.1.0",
     "prettier": "^3.5.3",
+    "tsx": "^4.20.3",
     "typescript": "~5.8.3",
     "vitest": "^3.2.4"
   },
