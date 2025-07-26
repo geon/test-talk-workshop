@@ -2,7 +2,12 @@ import { suite, test, expect } from "vitest";
 import { interpret } from "./interpret.js";
 
 testCases([
-	// TestCases go here
+	{
+		name: "empty program",
+		code: "",
+		input: "",
+		output: "",
+	},
 ]);
 
 type TestCase = {
