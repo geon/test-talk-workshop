@@ -86,6 +86,12 @@ testCases([
 		input: "",
 		output: "\x02\x01\x00",
 	},
+	{
+		name: "nested loop",
+		code: "++.[>[]<-.]",
+		input: "",
+		output: "\x02\x01\x00",
+	},
 ]);
 
 type TestCase = {
