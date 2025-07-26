@@ -62,6 +62,12 @@ testCases([
 		input: "A",
 		output: "\x00",
 	},
+	{
+		name: "branch past",
+		code: "[.]",
+		input: "",
+		output: "",
+	},
 ]);
 
 type TestCase = {
