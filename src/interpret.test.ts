@@ -56,6 +56,12 @@ testCases([
 		input: "A",
 		output: "\x00",
 	},
+	{
+		name: "decrement pointer",
+		code: ">,<.",
+		input: "A",
+		output: "\x00",
+	},
 ]);
 
 type TestCase = {
