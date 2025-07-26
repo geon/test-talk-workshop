@@ -6,6 +6,7 @@ export async function interpret(
 	},
 ): Promise<void> {
 	const instructions = createInstructions(code);
+	const memory = createMemory();
 
 	while (true) {
 		switch (instructions.getNext()) {
@@ -14,7 +15,12 @@ export async function interpret(
 			}
 
 			case ".": {
-				io.put(0);
+				io.put(memory.get());
+				break;
+			}
+
+			case ",": {
+				memory.set(await io.get());
 				break;
 			}
 		}
@@ -28,6 +34,16 @@ function createInstructions(code: string) {
 		getNext: (): string | undefined => {
 			++currentInstructionPointer;
 			return code[currentInstructionPointer];
+		},
+	};
+}
+
+function createMemory() {
+	let memory = 0;
+	return {
+		get: (): number => memory,
+		set: (value: number): void => {
+			memory = value;
 		},
 	};
 }
