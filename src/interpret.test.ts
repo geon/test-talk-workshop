@@ -20,6 +20,12 @@ testCases([
 		input: "",
 		output: "\x00\x00",
 	},
+	{
+		name: "input",
+		code: ",.",
+		input: "A",
+		output: "A",
+	},
 ]);
 
 type TestCase = {
