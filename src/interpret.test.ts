@@ -8,6 +8,12 @@ testCases([
 		input: "",
 		output: "",
 	},
+	{
+		name: "output",
+		code: ".",
+		input: "",
+		output: "\x00",
+	},
 ]);
 
 type TestCase = {
