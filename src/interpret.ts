@@ -23,6 +23,11 @@ export async function interpret(
 				memory.set(await io.get());
 				break;
 			}
+
+			case "+": {
+				memory.set(memory.get() + 1);
+				break;
+			}
 		}
 	}
 }
